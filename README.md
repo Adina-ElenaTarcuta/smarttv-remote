@@ -12,21 +12,20 @@ Clean structure: src/ble, src/components, src/screens, src/ui.
 
 Configurable UUIDs: service + characteristic can be edited in the app.
 
-#Pre-installations packages and environment requierments
+## Pre-installation (packages & environment)
 
- - Node.js 18+ and npm
+- Node.js 18+ and npm  
+- Android Studio (SDK + Platform Tools)  
+- A real Android phone for BLE (the Android emulator does **not** support Bluetooth)
 
- - Android Studio (SDK + Platform Tools)
-
- - A real Android phone for BLE (the Android emulator does not support Bluetooth)
-
-#Running on the Android emulator (UI only)
+## Running on the Android emulator (UI only)
 
 You can preview UI, but BLE scan/connect won’t work in the emulator.
-commands:
- - npx expo run:android
- - npx expo start --dev-client
-(press 'a' to open the emulator)
+
+```bash
+npx expo run:android
+npx expo start --dev-client   # press 'a' to open the emulator
+
 
 #Scripts for running the application on phisical device
 Pre-requests:
