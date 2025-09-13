@@ -33,20 +33,20 @@ Pre-requests:
   Tip for Android: Verify ADB sees the phone with the command: adb devices ; should show: <serial>  device
 - iOS: macOS + Xcode + Apple ID/Team (enable 'Developer Mode' on the device: Settings → Privacy & Security → Developer Mode).
 
-# **FOR ANDROID**
+## FOR ANDROID
   **Install JS deps**
-npm install
+``` npm install ```
 
   **Build & install native Dev Client on device/emulator**
-npx expo run:android
+``` npx expo run:android ```
 
   **Start Metro for Dev Client (day-to-day coding)**
-npx expo start --dev-client
+``` npx expo start --dev-client ```
 
   **Clear Metro cache if modules look stale**
 npx expo start --dev-client -c
 
-**FOR iOS**
+## FOR iOS**
   **Install JS deps**
 npm install
 
