@@ -44,18 +44,18 @@ Pre-requests:
 ``` npx expo start --dev-client ```
 
   **Clear Metro cache if modules look stale**
-npx expo start --dev-client -c
+``` npx expo start --dev-client -c ```
 
-## FOR iOS**
+## FOR iOS
   **Install JS deps**
-npm install
+``` npm install ```
 
   **Build & install the Dev Client on the device (first time / after native changes)**
 (Plug in the iPhone; may prompt Xcode signing the first time)
-npx expo run:ios --device
+``` npx expo run:ios --device ```
 
 **Start Metro (day-to-day development)**
-npx expo start --dev-client
+``` npx expo start --dev-client ```
 
 **Clear Metro cache if needed**
-npx expo start --dev-client -c
+``` npx expo start --dev-client -c ```
