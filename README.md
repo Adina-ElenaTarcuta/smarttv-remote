@@ -23,8 +23,10 @@ Configurable UUIDs: service + characteristic can be edited in the app.
 You can preview UI, but BLE scan/connect won’t work in the emulator.
 
 
-npx expo run:android
-npx expo start --dev-client   # press 'a' to open the emulator
+``` npx expo run:android ```
+``` npx expo start --dev-client  ```  
+
+Then press 'a' to open the emulator
 
 
 # Scripts for running the application on phisical device
