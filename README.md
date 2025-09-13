@@ -1,6 +1,6 @@
 A minimal mobile application developed with Expo and React Native (TypeScript) app that discovers a TV or any BLE peripheral, connects over Bluetooth Low Energy, and sends remote-control commands such as volume/channel, D-pad, home/back, mute, and text input via a modal keyboard.
 
-#Features
+## Features
 
 Pairing screen: scan nearby BLE devices, select to connect, live status badge.
 
@@ -22,18 +22,18 @@ Configurable UUIDs: service + characteristic can be edited in the app.
 
 You can preview UI, but BLE scan/connect won’t work in the emulator.
 
-```bash
+
 npx expo run:android
 npx expo start --dev-client   # press 'a' to open the emulator
 
 
-#Scripts for running the application on phisical device
+# Scripts for running the application on phisical device
 Pre-requests:
 - Android: Android Studio SDK and USB debugging enabled on the phone.
   Tip for Android: Verify ADB sees the phone with the command: adb devices ; should show: <serial>  device
 - iOS: macOS + Xcode + Apple ID/Team (enable 'Developer Mode' on the device: Settings → Privacy & Security → Developer Mode).
 
-**FOR ANDROID**
+# **FOR ANDROID**
   **Install JS deps**
 npm install
 
