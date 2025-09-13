@@ -1,0 +1,44 @@
+{
+  "name": "smarttv-remote",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~54.0.6",
+    "expo-dev-client": "^6.0.12",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-ble-plx": "^3.5.0",
+    "react-native-permissions": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "expo": {
+    "name": "smarttv-remote",
+    "slug": "smarttv-remote",
+    "ios": {
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "This app uses Bluetooth to discover and control your TV.",
+        "NSBluetoothPeripheralUsageDescription": "This app uses Bluetooth to connect to your TV."
+      }
+    },
+    "android": {
+      "permissions": [
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "BLUETOOTH_CONNECT",
+        "BLUETOOTH_SCAN",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "private": true
+  }
+}
