@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, Pressable, Alert } from 'react-native';
+import { useState } from 'react';
 import type { Device } from 'react-native-ble-plx';
 import { Ionicons } from '@expo/vector-icons';
 import IconButton from '../components/IconButton';
 import { colors } from '../ui/theme';
 import { CMD } from '../ble/commands';
 import DirectionalPad from '../components/DirectionalPad';
+import AlphabetKeyboard from '../components/AlphabetKeyboard';
 
 type Props = {
   connected: Device | null;
@@ -13,6 +15,7 @@ type Props = {
 };
 
 export default function RemoteScreen({ connected, onSend }: Props) {
+    const [typed, setTyped] = useState('');
   return (
     <View style={{ gap: 16 }}>
       <Text style={{ fontSize: 20, fontWeight: '700' }}>Remote</Text>
@@ -71,20 +74,15 @@ export default function RemoteScreen({ connected, onSend }: Props) {
       </View>
 
       {/* Keyboard placeholder */}
-      <Pressable
-        onPress={() => Alert.alert('Keyboard', 'Text input → map to TV protocol (future work).')}
-        style={({ pressed }) => ({
-          marginTop: 10,
-          padding: 16,
-          borderRadius: 12,
-          borderWidth: 1,
-          borderColor: colors.border,
-          backgroundColor: pressed ? '#F1F5F9' : '#FFFFFF',
-          alignItems: 'center',
-        })}
-      >
-        <Text style={{ fontWeight: '600' }}>Keyboard</Text>
-      </Pressable>
+      <AlphabetKeyboard
+        onKey={(k) => {
+            if (k === 'BACKSPACE') setTyped((t) => t.slice(0, -1));
+            else 
+            if (k === 'ENTER') setTyped((t) => t + '\n');
+            else 
+            setTyped((t) => t + k);
+        }}
+    />
     </View>
   );
 }
