@@ -38,7 +38,7 @@ export default function RemoteScreen({ connected, onSend }: Props) {
         onOk={() => onSend(CMD.OK)}
       />
 
-      {/* Volume / Channel */}
+      {/* Volume and Channel */}
       <View style={{ flexDirection: 'row', gap: 16, justifyContent: 'space-between' }}>
         <View style={{ gap: 10, flex: 1 }}>
           <Text style={{ fontWeight: '600' }}>Volume</Text>

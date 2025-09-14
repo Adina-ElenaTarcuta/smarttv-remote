@@ -1,4 +1,4 @@
-// Demo command bytes (base64). Replace with your TV protocol mapping later.
+// command bytes (base64).
 export const CMD = {
   VOL_UP:   'AQ==', // 0x01
   VOL_DOWN: 'Ag==', // 0x02

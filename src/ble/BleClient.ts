@@ -25,7 +25,7 @@ export async function writeBase64(
   device: Device,
   serviceUUID: string,
   charUUID: string,
-  base64Payload: string, // e.g. "AQ==" for 0x01
+  base64Payload: string,
 ) {
   return device.writeCharacteristicWithoutResponseForService(serviceUUID, charUUID, base64Payload);
 }
