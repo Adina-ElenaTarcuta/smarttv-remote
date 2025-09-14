@@ -6,7 +6,7 @@ import { Base64 } from 'js-base64';
 const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 export const ble = new BleManager();
-
+// when one scan is successful it reports the devices
 export function scanOnce(onDevice: (d: Device) => void, onError: (e: Error) => void) {
   const sub = ble.startDeviceScan(null, { allowDuplicates: false }, (err, device) => {
     if (err) { onError(err); return; }
@@ -15,7 +15,7 @@ export function scanOnce(onDevice: (d: Device) => void, onError: (e: Error) => v
   // Stop after 10s
    setTimeout(() => {ble.stopDeviceScan();}, 10000);
 }
-
+ //connect then with discover service and characteristics
 export async function connectAndDiscover(device: Device) {
   const d = await device.connect();
   return d.discoverAllServicesAndCharacteristics();
@@ -30,6 +30,7 @@ export async function writeBase64(
   return device.writeCharacteristicWithoutResponseForService(serviceUUID, charUUID, base64Payload);
 }
 
+// send text as UTF-8 Base64 encoded
 export async function writeText(
   device: Device,
   serviceUUID: string,
@@ -42,6 +43,6 @@ export async function writeText(
     const chunk = utf8Bytes.slice(i, i + CHUNK_SIZE);
     const b64 = Base64.fromUint8Array(chunk);
     await device.writeCharacteristicWithoutResponseForService(serviceUUID, charUUID, b64);
-    await sleep(15); // tiny pacing to be polite
+    await sleep(15); 
   }
 }

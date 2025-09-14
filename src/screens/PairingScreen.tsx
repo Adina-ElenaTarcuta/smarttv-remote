@@ -15,7 +15,7 @@ type Props = {
   onScan: () => void;
   onConnect: (d: Device) => void;
 };
-
+// pairing screen
 export default function PairingScreen({
   serviceUUID, setServiceUUID,
   charUUID, setCharUUID,
@@ -83,7 +83,7 @@ export default function PairingScreen({
         )}
         ListEmptyComponent={<Text>No devices yet. Tap Scan.</Text>}
       />
-
+        {/* connection status */}
       <View style={{ gap: 6 }}>
         <Text style={{ fontWeight: '600' }}>Status:</Text>
         {connected ? (
