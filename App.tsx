@@ -10,16 +10,19 @@ import { CMD } from './src/ble/commands';
 type Tab = 'pairing' | 'remote';
 type DeviceMap = Record<string, Device>;
 
+// Default BLE GATT IDs at start-up (service + write characteristic).
+// User can edit these on the Pairing screen.
 const DEFAULT_SERVICE = '0000ffff-0000-1000-8000-00805f9b34fb';
 const DEFAULT_CHAR    = '0000ff01-0000-1000-8000-00805f9b34fb';
 
 export default function App() {
+  // tabs and connection state
   const [tab, setTab] = useState<Tab>('pairing');
 
   const [devices, setDevices] = useState<DeviceMap>({});
   const [connectingId, setConnectingId] = useState<string | null>(null);
   const [connected, setConnected] = useState<Device | null>(null);
-
+  // active UUIDs
   const [serviceUUID, setServiceUUID] = useState(DEFAULT_SERVICE);
   const [charUUID, setCharUUID] = useState(DEFAULT_CHAR);
 
@@ -27,6 +30,7 @@ export default function App() {
     return () => { try { connected?.cancelConnection(); } catch {} };
   }, [connected]);
 
+  // Android permission request for Bluetooth and Location
   const askPerms = async () => {
     if (Platform.OS !== 'android') return true;
     const res = await requestMultiple([
@@ -38,6 +42,7 @@ export default function App() {
     return ok.includes(res[PERMISSIONS.ANDROID.BLUETOOTH_SCAN] as any);
   };
 
+  // scan for devices
   const onScan = async () => {
     const allowed = await askPerms();
     if (!allowed) { Alert.alert('Permission required', 'Grant Bluetooth permissions to scan.'); return; }
@@ -47,7 +52,7 @@ export default function App() {
       (e) => Alert.alert('Scan error', String((e as any)?.message ?? e)),
     );
   };
-
+   // connect and discover services
   const onConnect = async (d: Device) => {
     try {
       setConnectingId(d.id);
@@ -61,7 +66,7 @@ export default function App() {
       setConnectingId(null);
     }
   };
-
+  // pop-out message when user try to use commands when devices are not connected
   const onSend = async (payload: string) => {
     if (!connected) { Alert.alert('Not connected', 'Select a device on Pairing tab.'); return; }
     try {
